@@ -29,7 +29,7 @@ class CustomNoteItem extends StatelessWidget {
               child: Text(
                 'Build Your Career With thrwat samy',
                 style: TextStyle(
-                    fontSize: 16, color: Colors.black.withOpacity(0.5)),
+                    fontSize: 14, color: Colors.black.withOpacity(0.5)),
               ),
             ),
             trailing: IconButton(
