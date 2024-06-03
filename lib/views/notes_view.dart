@@ -17,7 +17,7 @@ class NotesView extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(
               Icons.add,
-              size: 25,
+              size: 22,
             )),
       ),
       body: const NotesViewBody(),
