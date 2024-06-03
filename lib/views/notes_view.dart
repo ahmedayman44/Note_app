@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notee_app/views/widgets/add_note_bottom_sheet.dart';
 import 'package:notee_app/views/widgets/notes_view_body.dart';
 
 class NotesView extends StatelessWidget {
@@ -14,7 +15,13 @@ class NotesView extends StatelessWidget {
         ),
         child: IconButton(
             color: Colors.black,
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return const AddNoteModelSheet();
+                  });
+            },
             icon: const Icon(
               Icons.add,
               size: 22,
