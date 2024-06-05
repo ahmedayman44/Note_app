@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:notee_app/views/custom_button.dart';
+import 'package:notee_app/views/widgets/custom_button.dart';
 
 import 'package:notee_app/views/widgets/custom_text_field.dart';
 
