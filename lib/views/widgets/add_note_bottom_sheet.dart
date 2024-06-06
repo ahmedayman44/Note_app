@@ -29,7 +29,9 @@ class AddNoteModelSheet extends StatelessWidget {
                 hintText: 'Content',
                 maxLines: 5,
               ),
-              SizedBox(height: 95,),
+              SizedBox(
+                height: 95,
+              ),
               CustomButton()
             ],
           ),
@@ -38,4 +40,3 @@ class AddNoteModelSheet extends StatelessWidget {
     );
   }
 }
-

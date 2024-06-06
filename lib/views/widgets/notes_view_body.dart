@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:notee_app/views/widgets/custom_app_bar.dart';
 import 'package:notee_app/views/widgets/noter_list_view.dart';
 
@@ -14,15 +12,18 @@ class NotesViewBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 33,
+            height: 60,
           ),
-          CustomAppBar(),
+          CustomAppBar(
+            text: 'Notes',
+            icon: Icons.search,
+          ),
           //expanded to privent limit size of listview ==>use in widget Row And Column
-          Expanded(child: NotesItemListView(),)
+          Expanded(
+            child: NotesItemListView(),
+          )
         ],
       ),
     );
   }
 }
-
-
