@@ -2,14 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:notee_app/constants/constant.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.hintText, this.maxLines =1 });
+  const CustomTextField({super.key, required this.hintText, this.maxLines =1, this.onsaved });
 
   final String hintText ; 
   final int maxLines ;
-
+  final void Function(String?)? onsaved ;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onSaved: onsaved,
+      validator: (value){
+          if (value?.isEmpty ?? true) {
+            return 'Field Is Required';
+          } else{
+            return null;
+          }
+          
+      },
       cursorColor: kPrimaryhColor,
       maxLines: maxLines,
       decoration: InputDecoration(
