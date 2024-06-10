@@ -14,4 +14,3 @@ final class AddNoteFailed extends AddNoteState {
 
   AddNoteFailed(this.errMessage);
 }
-
