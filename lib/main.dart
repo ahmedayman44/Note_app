@@ -13,8 +13,9 @@ void main() async {
 
   Bloc.observer = SimpleObserveer();
   //openbox used to stor data ==> you can see about it  collection
+   Hive.registerAdapter(ModelNoteAdapter());
   await Hive.openBox<ModelNote>(kNoteBox);
-  Hive.registerAdapter(ModelNoteAdapter());
+ 
   runApp(const NotesApp());
 }
 
