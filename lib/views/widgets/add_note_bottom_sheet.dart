@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notee_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notee_app/model/model_note.dart';
 
@@ -102,10 +103,15 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       // here we save data in hive
                       formKey.currentState!.save();
 
+                      var currentDate = DateTime.now();
+
+                      var formattedCurrentDate =
+                          DateFormat('dd-mm-yyyy').format(currentDate);
+
                       var modelNote = ModelNote(
                           title: title!,
                           subtitle: subtitle!,
-                          date: DateTime.now().toString(),
+                          date: formattedCurrentDate,
                           color: Colors.red.value);
                       BlocProvider.of<AddNoteCubit>(context).addNote(modelNote);
                     } else {
