@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notee_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notee_app/model/model_note.dart';
 
@@ -13,30 +12,30 @@ class AddNoteModelSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 500,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
-            if (State is AddNoteSuccess) {
-              Navigator.pop(context);
-            }
-            if (State is AddNoteFailed) {
-              // ScaffoldMessenger.of(context).showSnackBar(
-              //   SnackBar(content: Text(state.errMessage)),
-              // );
-            }
-          },
-          builder: (context, state) {
-            return const ModalProgressHUD(
-              inAsyncCall: State is AddNoteLoading ? true : false,
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (State is AddNoteSuccess) {
+            Navigator.pop(context);
+          }
+          if (State is AddNoteFailed) {
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(content: Text(state.errMessage)),
+            // );
+          }
+        },
+        builder: (context, state) {
+          return AbsorbPointer(
+            absorbing: state is AddNoteLoading ? true : false,
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: SingleChildScrollView(
                 child: AddNoteForm(),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -86,28 +85,36 @@ class _AddNoteFormState extends State<AddNoteForm> {
             maxLines: 5,
           ),
           const SizedBox(
-            height: 60,
+            height: 40,
           ),
-          CustomButton(
-              // here Validate input data
-              onTap: () {
-            // heere we validate input data before save it in hive
-            if (formKey.currentState!.validate()) {
-              // here we save data in hive
-              formKey.currentState!.save();
+          BlocBuilder<AddNoteCubit, AddNoteState>(
+            builder: (context, state) {
+              return CustomButton(
+                  isLoading: state is AddNoteLoading ? true : false,
+                  // here Validate input data
+                  onTap: () {
+                    // heere we validate input data before save it in hive
+                    if (formKey.currentState!.validate()) {
+                      // here we save data in hive
+                      formKey.currentState!.save();
 
-              var modelNote = ModelNote(
-                  title: title!,
-                  subtitle: subtitle!,
-                  date: DateTime.now().toString(),
-                  color: Colors.red.value);
-              BlocProvider.of<AddNoteCubit>(context).addNote(modelNote);
-            } else {
-              // here we show error when input data is wrong and some data is null
-              autovalidateMode = AutovalidateMode.always;
-              setState(() {});
-            }
-          })
+                      var modelNote = ModelNote(
+                          title: title!,
+                          subtitle: subtitle!,
+                          date: DateTime.now().toString(),
+                          color: Colors.red.value);
+                      BlocProvider.of<AddNoteCubit>(context).addNote(modelNote);
+                    } else {
+                      // here we show error when input data is wrong and some data is null
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  });
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
         ],
       ),
     );
