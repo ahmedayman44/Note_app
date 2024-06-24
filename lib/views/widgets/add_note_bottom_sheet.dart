@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notee_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notee_app/cubits/notes/notes_cubit.dart';
 import 'package:notee_app/model/model_note.dart';
 
 import 'package:notee_app/views/widgets/custom_button.dart';
@@ -18,6 +19,7 @@ class AddNoteModelSheet extends StatelessWidget {
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (State is AddNoteSuccess) {
+            BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
           }
           if (State is AddNoteFailed) {
