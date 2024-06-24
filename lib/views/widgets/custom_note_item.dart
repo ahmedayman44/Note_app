@@ -8,6 +8,7 @@ class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({super.key, required this.note});
 
   final ModelNote note;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,7 +17,9 @@ class CustomNoteItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return const EditNotesView();
+              return  EditNotesView(
+               note: note,
+              );
             },
           ),
         );
