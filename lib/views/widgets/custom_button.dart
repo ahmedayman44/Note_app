@@ -16,7 +16,9 @@ class CustomButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 50,
         decoration: BoxDecoration(
-            color: kPrimaryhColor, borderRadius: BorderRadius.circular(10)),
+          color: kPrimaryhColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Center(
           child: isLoading
               ? const SizedBox(
@@ -29,9 +31,10 @@ class CustomButton extends StatelessWidget {
               : const Text(
                   'Add',
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
         ),
       ),

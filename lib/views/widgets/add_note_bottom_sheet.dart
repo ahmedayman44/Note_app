@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:notee_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notee_app/cubits/notes/notes_cubit.dart';
 import 'package:notee_app/model/model_note.dart';
+import 'package:notee_app/views/widgets/colors_list_view.dart';
 
 import 'package:notee_app/views/widgets/custom_button.dart';
 
@@ -23,9 +24,11 @@ class AddNoteModelSheet extends StatelessWidget {
             Navigator.pop(context);
           }
           if (State is AddNoteFailed) {
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(content: Text(state.errMessage)),
-            // );
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Something went wrong'),
+              ),
+            );
           }
         },
         builder: (context, state) {
@@ -94,34 +97,42 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(
             height: 40,
           ),
+          const ColorListView(),
+          const SizedBox(
+            height: 40,
+          ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
-                  isLoading: state is AddNoteLoading ? true : false,
-                  // here Validate input data
-                  onTap: () {
-                    // heere we validate input data before save it in hive
-                    if (formKey.currentState!.validate()) {
-                      // here we save data in hive
-                      formKey.currentState!.save();
+                isLoading: state is AddNoteLoading ? true : false,
+                // here Validate input data
+                onTap: () {
+                  // heere we validate input data before save it in hive
+                  if (formKey.currentState!.validate()) {
+                    // here we save data in hive
+                    formKey.currentState!.save();
 
-                      var currentDate = DateTime.now();
+                    var currentDate = DateTime.now();
 
-                      var formattedCurrentDate =
-                          DateFormat('dd-mm-yyyy').format(currentDate);
+                    var formattedCurrentDate =
+                        DateFormat('dd-mm-yyyy').format(currentDate);
 
-                      var modelNote = ModelNote(
-                          title: title!,
-                          subtitle: subtitle!,
-                          date: formattedCurrentDate,
-                          color: Colors.red.value);
-                      BlocProvider.of<AddNoteCubit>(context).addNote(modelNote);
-                    } else {
-                      // here we show error when input data is wrong and some data is null
-                      autovalidateMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
-                  });
+                    var modelNote = ModelNote(
+                        title: title!,
+                        subtitle: subtitle!,
+                        date: formattedCurrentDate,
+                        color: Colors.red.value);
+                    BlocProvider.of<AddNoteCubit>(context).addNote(modelNote);
+                  } else {
+                    // here we show error when input data is wrong and some data is null
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                 
+                 
+                  //Navigator.pop(context);
+                },
+              );
             },
           ),
           const SizedBox(

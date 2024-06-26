@@ -17,11 +17,12 @@ class NotesView extends StatelessWidget {
             color: Colors.black,
             onPressed: () {
               showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  builder: (context) {
-                    return const AddNoteModelSheet();
-                  });
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return const AddNoteModelSheet();
+                },
+              );
             },
             icon: const Icon(
               Icons.add,
