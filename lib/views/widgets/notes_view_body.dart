@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notee_app/cubits/notes/notes_cubit.dart';
+import '../../cubits/notes/notes_cubit.dart';
 
-import 'package:notee_app/views/widgets/custom_app_bar.dart';
-import 'package:notee_app/views/widgets/noter_list_view.dart';
+import 'custom_app_bar.dart';
+import 'noter_list_view.dart';
 
 class NotesViewBody extends StatefulWidget {
   const NotesViewBody({super.key});

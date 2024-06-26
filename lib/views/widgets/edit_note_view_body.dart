@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notee_app/constants/constant.dart';
-import 'package:notee_app/cubits/notes/notes_cubit.dart';
-import 'package:notee_app/model/model_note.dart';
-import 'package:notee_app/views/widgets/colors_list_view.dart';
-import 'package:notee_app/views/widgets/custom_app_bar.dart';
-import 'package:notee_app/views/widgets/custom_text_field.dart';
+import '../../constants/constant.dart';
+import '../../cubits/notes/notes_cubit.dart';
+import '../../model/model_note.dart';
+import 'colors_list_view.dart';
+import 'custom_app_bar.dart';
+import 'custom_text_field.dart';
 
 class EditNoteViewBody extends StatefulWidget {
   const EditNoteViewBody({super.key, required this.note});

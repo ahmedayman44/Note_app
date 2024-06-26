@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
-import 'package:notee_app/constants/constant.dart';
-import 'package:notee_app/model/model_note.dart';
+import '../../constants/constant.dart';
+import '../../model/model_note.dart';
 
 part 'notes_state.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notee_app/cubits/notes/notes_cubit.dart';
-import 'package:notee_app/model/model_note.dart';
-import 'package:notee_app/views/widgets/custom_note_item.dart';
+import '../../cubits/notes/notes_cubit.dart';
+import '../../model/model_note.dart';
+import 'custom_note_item.dart';
 
 class NotesItemListView extends StatelessWidget {
   const NotesItemListView({super.key});

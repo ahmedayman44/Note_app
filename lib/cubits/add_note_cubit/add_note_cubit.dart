@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:meta/meta.dart';
-import 'package:notee_app/constants/constant.dart';
-import 'package:notee_app/model/model_note.dart';
+import '../../constants/constant.dart';
+import '../../model/model_note.dart';
 
 part 'add_note_state.dart';
 

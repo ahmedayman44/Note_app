@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:notee_app/cubits/add_note_cubit/add_note_cubit.dart';
-import 'package:notee_app/cubits/notes/notes_cubit.dart';
-import 'package:notee_app/model/model_note.dart';
-import 'package:notee_app/views/widgets/colors_list_view.dart';
+import '../../cubits/add_note_cubit/add_note_cubit.dart';
+import '../../cubits/notes/notes_cubit.dart';
+import '../../model/model_note.dart';
+import 'colors_list_view.dart';
 
-import 'package:notee_app/views/widgets/custom_button.dart';
+import 'custom_button.dart';
 
-import 'package:notee_app/views/widgets/custom_text_field.dart';
+import 'custom_text_field.dart';
 
 class AddNoteModelSheet extends StatelessWidget {
   const AddNoteModelSheet({super.key});
@@ -128,9 +128,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});
                   }
-                 
-                 
-                  //Navigator.pop(context);
+
+                  Navigator.pop(context);
                 },
               );
             },

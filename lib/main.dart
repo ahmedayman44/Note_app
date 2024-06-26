@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notee_app/constants/constant.dart';
-import 'package:notee_app/cubits/notes/notes_cubit.dart';
-import 'package:notee_app/model/model_note.dart';
-import 'package:notee_app/simple_bloc_observer.dart';
-import 'package:notee_app/views/notes_view.dart';
+import 'constants/constant.dart';
+import 'cubits/notes/notes_cubit.dart';
+import 'model/model_note.dart';
+import 'simple_bloc_observer.dart';
+import 'views/notes_view.dart';
 // hive_flutter package used to show initflutter()
 import 'package:hive_flutter/hive_flutter.dart';
 
