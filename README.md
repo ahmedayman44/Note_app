@@ -1,6 +1,6 @@
 # Note_app
 
-A new Flutter project.
+This application is used to record notes .
 
 ## Getting Started
 
